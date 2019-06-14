@@ -1,13 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const Modal = ({ showModal }) => {
+const Modal = ({ title, mainText ,showModal }) => {
   return ReactDOM.createPortal(
     <div className="ui dimmer modals visible active">
       <div className="ui standard modal visible active">  
-        <div className="header">Modal</div>
+        <div className="header">{title}</div>
         <div className="content">
-          Are you sure you want to ...?
+          {mainText}
         </div>
         <div className="actions">
           <button onClick={() => showModal(true)} className="ui primary button">Yes</button>

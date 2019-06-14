@@ -4,14 +4,17 @@ import './App.css';
 import Modal from './Modal'
 
 const App = () => {
+  const modal = {
+    title: 'Confrim Modal',
+    mainText: 'Are you totaly sure???',
+    actions: (status) => {
+      showModal(!isModalShown)
+      confirmStatus(status)
+    }
+  }
   const [isModalShown, showModal] = useState(false)
   const [confirmedStatus, confirmStatus] = useState(false)
-
-  const showHideModal = (status) => {
-    showModal(!isModalShown)
-    confirmStatus(status)
-  }
-
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -21,7 +24,10 @@ const App = () => {
         </p>
         <button type="button" onClick={() => showModal(true)}>Portal</button>
         { isModalShown &&
-          <Modal showModal={showHideModal}></Modal>
+          <Modal 
+            title={modal.title}
+            mainText={modal.mainText}
+            showModal={modal.actions}></Modal>
         }
         <div class="ui one column grid">
           <div class="column">
